@@ -51,27 +51,6 @@ export default function About() {
             <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, transparent 50%, rgba(184,134,11,0.15) 100%)", borderRadius: "20px" }} />
           </div>
 
-          {/* Float card top-right */}
-          <FloatCard style={{ top: "-1.2rem", right: "-1.8rem", width: "190px" }}>
-            <CardIcon>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#b8860b" strokeWidth="2">
-                <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
-              </svg>
-            </CardIcon>
-            <div style={{ fontSize: "0.68rem", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "#7a7a74", marginBottom: "0.3rem" }}>Technologie</div>
-            <div style={{ fontSize: "1.1rem", fontWeight: 800, color: "#111110" }}>Made in Africa</div>
-          </FloatCard>
-
-          {/* Float card bottom-left */}
-          <FloatCard style={{ bottom: "-1.2rem", left: "-1.8rem", width: "170px" }}>
-            <CardIcon>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#b8860b" strokeWidth="2">
-                <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
-              </svg>
-            </CardIcon>
-            <div style={{ fontSize: "0.68rem", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "#7a7a74", marginBottom: "0.3rem" }}>Fondée en</div>
-            <div style={{ fontSize: "1.1rem", fontWeight: 800, color: "#111110" }}>2025</div>
-          </FloatCard>
         </div>
 
         {/* ── Content ── */}
