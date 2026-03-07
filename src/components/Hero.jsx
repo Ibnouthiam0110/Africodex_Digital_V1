@@ -1,4 +1,6 @@
 import LOGO from "../data/logo.js";
+import HERO_IMAGE from "../data/heroImage.js";
+
 const HeroCard = ({ dark = false, children }) => (
   <div style={{
     background: dark ? "linear-gradient(135deg, #111110 0%, #2a2a28 100%)" : "#fff",
