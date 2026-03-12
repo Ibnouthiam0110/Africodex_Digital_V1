@@ -1,5 +1,5 @@
 import SectionHeader from "./SectionHeader";
-
+import TeamImage from "../images/AFRICODEX_Image.jpeg";
 const FloatCard = ({ style, children }) => (
   <div style={{
     position: "absolute",
@@ -43,7 +43,7 @@ export default function About() {
             boxShadow: "0 16px 56px rgba(0,0,0,0.13)",
           }}>
             <img
-              src="src/images/AFRICODEX_Image.jpeg"
+              src={TeamImage} 
               alt="Équipe Africodex Digital"
               style={{ width: "100%", height: "100%", objectFit: "cover" }}
             />
