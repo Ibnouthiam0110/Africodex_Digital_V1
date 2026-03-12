@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import LOGO from "../data/logo.js";
 
 const NAV_LINKS = [
-  ["#about",        "À propos"],
+  ["#about",        "A propos"],
   ["#services",     "Services"],
-  ["#realisations", "Réalisations"],
+  ["#realisations", "Realisations"],
   ["#process",      "Approche"],
   ["#contact",      "Contact"],
 ];
@@ -50,10 +50,18 @@ export default function Navbar() {
                 </li>
               ))}
             </ul>
-            <a href="#contact" style={{ background: "#111110", color: "#fff", padding: "0.6rem 1.5rem", fontSize: "0.8rem", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", textDecoration: "none", borderRadius: "4px", whiteSpace: "nowrap" }}
-              onMouseEnter={e => { e.target.style.background = "#b8860b"; e.target.style.transform = "translateY(-2px)"; }}
-              onMouseLeave={e => { e.target.style.background = "#111110"; e.target.style.transform = "translateY(0)"; }}
-            >Démarrer un projet</a>
+
+            <div style={{ display: "flex", gap: "0.8rem", alignItems: "center" }}>
+              <a href="#rejoignez-nous" style={{ background: "transparent", color: "#b8860b", padding: "0.6rem 1.5rem", fontSize: "0.8rem", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", textDecoration: "none", borderRadius: "4px", border: "1.5px solid #b8860b", whiteSpace: "nowrap", transition: "background 0.3s, color 0.3s" }}
+                onMouseEnter={e => { e.currentTarget.style.background = "#b8860b"; e.currentTarget.style.color = "#fff"; }}
+                onMouseLeave={e => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = "#b8860b"; }}
+              >Rejoignez-nous</a>
+
+              <a href="#contact" style={{ background: "#111110", color: "#fff", padding: "0.6rem 1.5rem", fontSize: "0.8rem", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", textDecoration: "none", borderRadius: "4px", whiteSpace: "nowrap", transition: "background 0.3s" }}
+                onMouseEnter={e => { e.currentTarget.style.background = "#b8860b"; }}
+                onMouseLeave={e => { e.currentTarget.style.background = "#111110"; }}
+              >Demarrer un projet</a>
+            </div>
           </>
         )}
 
@@ -71,7 +79,8 @@ export default function Navbar() {
           {NAV_LINKS.map(([href, label]) => (
             <a key={href} href={href} onClick={() => setMenuOpen(false)} style={{ color: "#111110", textDecoration: "none", fontSize: "1rem", fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase" }}>{label}</a>
           ))}
-          <a href="#contact" onClick={() => setMenuOpen(false)} style={{ background: "#111110", color: "#fff", padding: "0.9rem 1.5rem", fontSize: "0.85rem", fontWeight: 700, textAlign: "center", textDecoration: "none", borderRadius: "4px", marginTop: "0.5rem" }}>Démarrer un projet</a>
+          <a href="#rejoignez-nous" onClick={() => setMenuOpen(false)} style={{ background: "transparent", color: "#b8860b", padding: "0.9rem 1.5rem", fontSize: "0.85rem", fontWeight: 700, textAlign: "center", textDecoration: "none", borderRadius: "4px", border: "1.5px solid #b8860b", marginTop: "0.5rem" }}>Rejoignez-nous</a>
+          <a href="#contact" onClick={() => setMenuOpen(false)} style={{ background: "#111110", color: "#fff", padding: "0.9rem 1.5rem", fontSize: "0.85rem", fontWeight: 700, textAlign: "center", textDecoration: "none", borderRadius: "4px" }}>Demarrer un projet</a>
         </div>
       )}
     </>
