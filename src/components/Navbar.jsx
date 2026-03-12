@@ -38,7 +38,6 @@ export default function Navbar() {
           <img src={LOGO} alt="Africodex Digital" style={{ height: "50px", width: "auto", objectFit: "contain" }} />
         </a>
 
-        {/* Desktop nav */}
         {!isMobile && (
           <>
             <ul style={{ display: "flex", gap: "2rem", listStyle: "none", margin: 0, padding: 0 }}>
@@ -51,14 +50,13 @@ export default function Navbar() {
                 </li>
               ))}
             </ul>
-            <a href="#contact" style={{ background: "#111110", color: "#fff", padding: "0.6rem 1.5rem", fontSize: "0.8rem", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", textDecoration: "none", borderRadius: "4px", fontFamily: "'Plus Jakarta Sans', sans-serif", transition: "background 0.3s, transform 0.2s", whiteSpace: "nowrap" }}
+            <a href="#contact" style={{ background: "#111110", color: "#fff", padding: "0.6rem 1.5rem", fontSize: "0.8rem", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", textDecoration: "none", borderRadius: "4px", whiteSpace: "nowrap" }}
               onMouseEnter={e => { e.target.style.background = "#b8860b"; e.target.style.transform = "translateY(-2px)"; }}
               onMouseLeave={e => { e.target.style.background = "#111110"; e.target.style.transform = "translateY(0)"; }}
             >Démarrer un projet</a>
           </>
         )}
 
-        {/* Burger button mobile */}
         {isMobile && (
           <button onClick={() => setMenuOpen(!menuOpen)} style={{ background: "none", border: "none", cursor: "pointer", padding: "0.4rem", display: "flex", flexDirection: "column", gap: "5px" }}>
             <span style={{ display: "block", width: "24px", height: "2px", background: "#111110", transition: "all 0.3s", transform: menuOpen ? "rotate(45deg) translateY(7px)" : "none" }} />
@@ -68,17 +66,10 @@ export default function Navbar() {
         )}
       </nav>
 
-      {/* Menu mobile déroulant */}
       {isMobile && menuOpen && (
-        <div style={{
-          position: "fixed", top: "66px", left: 0, right: 0, zIndex: 99,
-          background: "rgba(255,255,255,0.98)", backdropFilter: "blur(16px)",
-          borderBottom: "1px solid #e5dfd3",
-          padding: "1.5rem 1.2rem",
-          display: "flex", flexDirection: "column", gap: "1.2rem",
-        }}>
+        <div style={{ position: "fixed", top: "66px", left: 0, right: 0, zIndex: 99, background: "rgba(255,255,255,0.98)", backdropFilter: "blur(16px)", borderBottom: "1px solid #e5dfd3", padding: "1.5rem 1.2rem", display: "flex", flexDirection: "column", gap: "1.2rem" }}>
           {NAV_LINKS.map(([href, label]) => (
-            <a key={href} href={href} onClick={() => setMenuOpen(false)} style={{ color: "#111110", textDecoration: "none", fontSize: "1rem", fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", fontFamily: "'Plus Jakarta Sans', sans-serif" }}>{label}</a>
+            <a key={href} href={href} onClick={() => setMenuOpen(false)} style={{ color: "#111110", textDecoration: "none", fontSize: "1rem", fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase" }}>{label}</a>
           ))}
           <a href="#contact" onClick={() => setMenuOpen(false)} style={{ background: "#111110", color: "#fff", padding: "0.9rem 1.5rem", fontSize: "0.85rem", fontWeight: 700, textAlign: "center", textDecoration: "none", borderRadius: "4px", marginTop: "0.5rem" }}>Démarrer un projet</a>
         </div>

@@ -70,7 +70,7 @@ export default function ServiceModal({ service, onClose }) {
             onMouseEnter={e => e.currentTarget.style.background = "#f2ede4"}
             onMouseLeave={e => e.currentTarget.style.background = "#faf8f4"}
           >
-            ✕
+            âœ•
           </button>
         </div>
 
@@ -137,7 +137,7 @@ export default function ServiceModal({ service, onClose }) {
             onMouseEnter={e => e.currentTarget.style.background = "#b8860b"}
             onMouseLeave={e => e.currentTarget.style.background = "#111110"}
           >
-            Demander un devis gratuit →
+            Demander un devis gratuit â†’
           </a>
         </div>
       </div>

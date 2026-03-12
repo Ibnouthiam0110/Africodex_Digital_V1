@@ -1,20 +1,6 @@
+import { useState, useEffect } from "react";
 import SectionHeader from "./SectionHeader";
 import TeamImage from "../images/AFRICODEX_Image.jpeg";
-const FloatCard = ({ style, children }) => (
-  <div style={{
-    position: "absolute",
-    background: "#fff", border: "1px solid #e5dfd3",
-    borderRadius: "16px", padding: "1.5rem",
-    boxShadow: "0 8px 36px rgba(0,0,0,0.10)",
-    ...style,
-  }}>{children}</div>
-);
-
-const CardIcon = ({ children }) => (
-  <div style={{ width: "38px", height: "38px", background: "#fdf6e3", borderRadius: "10px", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "0.8rem" }}>
-    {children}
-  </div>
-);
 
 const AboutItem = ({ title, desc }) => (
   <div style={{ display: "flex", alignItems: "flex-start", gap: "0.9rem", padding: "1.3rem", background: "#fff", borderRadius: "12px", border: "1px solid #e5dfd3", transition: "border-color 0.3s" }}
@@ -30,43 +16,34 @@ const AboutItem = ({ title, desc }) => (
 );
 
 export default function About() {
-  return (
-    <section id="about" style={{ padding: "7rem 5rem", background: "#faf8f4" }}>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "6rem", alignItems: "center" }}>
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  useEffect(() => {
+    const fn = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener("resize", fn);
+    return () => window.removeEventListener("resize", fn);
+  }, []);
 
-        {/* ── Visual: real photo ── */}
-        <div style={{ position: "relative", height: "460px" }}>
-          {/* Main photo */}
-          <div style={{
-            width: "100%", height: "100%",
-            borderRadius: "20px", overflow: "hidden",
-            boxShadow: "0 16px 56px rgba(0,0,0,0.13)",
-          }}>
-            <img
-              src={TeamImage} 
-              alt="Équipe Africodex Digital"
-              style={{ width: "100%", height: "100%", objectFit: "cover" }}
-            />
-            {/* Gold overlay */}
+  return (
+    <section id="about" style={{ padding: isMobile ? "4rem 1.2rem" : "7rem 5rem", background: "#faf8f4" }}>
+      <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: isMobile ? "2.5rem" : "6rem", alignItems: "center" }}>
+        <div style={{ position: "relative", height: isMobile ? "260px" : "460px" }}>
+          <div style={{ width: "100%", height: "100%", borderRadius: "20px", overflow: "hidden", boxShadow: "0 16px 56px rgba(0,0,0,0.13)" }}>
+            <img src={TeamImage} alt="Equipe Africodex Digital" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
             <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, transparent 50%, rgba(184,134,11,0.15) 100%)", borderRadius: "20px" }} />
           </div>
-
         </div>
-
-        {/* ── Content ── */}
         <div>
           <SectionHeader
             label="Notre Histoire"
-            title="Ancrés en Afrique,<br/>tournés vers <em style='font-family:Fraunces,serif;font-style:italic;color:#b8860b'>demain</em>"
-            subtitle="Africodex Digital est née d'une conviction simple : l'Afrique mérite des solutions numériques à la hauteur de son potentiel. Nous combinons expertise technique et compréhension profonde des réalités locales."
+            title="Ancres en Afrique,<br/>tournes vers <em style='font-family:Fraunces,serif;font-style:italic;color:#b8860b'>demain</em>"
+            subtitle="Africodex Digital est nee d'une conviction simple : l'Afrique merite des solutions numeriques a la hauteur de son potentiel."
           />
           <div style={{ display: "flex", flexDirection: "column", gap: "1rem", marginTop: "2rem" }}>
-            <AboutItem title="Expertise locale, standards globaux" desc="Les défis du marché africain compris, les meilleures pratiques internationales appliquées." />
-            <AboutItem title="Équipe passionnée & engagée" desc="Des talents africains dédiés à construire des produits qui changent concrètement la vie des utilisateurs." />
-            <AboutItem title="Partenariat sur le long terme" desc="Nous ne livrons pas un produit, nous bâtissons une relation. Votre succès est notre réussite." />
+            <AboutItem title="Expertise locale, standards globaux" desc="Les defis du marche africain compris, les meilleures pratiques internationales appliquees." />
+            <AboutItem title="Equipe passionnee et engagee" desc="Des talents africains dedies a construire des produits qui changent concretement la vie des utilisateurs." />
+            <AboutItem title="Partenariat sur le long terme" desc="Nous ne livrons pas un produit, nous batissons une relation. Votre succes est notre reussite." />
           </div>
         </div>
-
       </div>
     </section>
   );

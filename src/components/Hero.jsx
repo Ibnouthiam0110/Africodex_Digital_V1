@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import HERO_IMAGE from "../data/heroImage.js";
-import LOGO from "../data/logo.js";
 
 const HeroCard = ({ dark = false, children }) => (
   <div style={{
@@ -29,78 +28,39 @@ export default function Hero() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
   useEffect(() => {
-    const onResize = () => setIsMobile(window.innerWidth < 768);
-    window.addEventListener("resize", onResize);
-    return () => window.removeEventListener("resize", onResize);
+    const fn = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener("resize", fn);
+    return () => window.removeEventListener("resize", fn);
   }, []);
 
   return (
     <section id="home" style={{
       minHeight: "100vh",
       display: "grid",
-      gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",  // ✅ colonne sur mobile
+      gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
       alignItems: "center",
-      padding: isMobile ? "6rem 1.2rem 3rem" : "8rem 5rem 5rem", // ✅ padding mobile
+      padding: isMobile ? "6rem 1.2rem 3rem" : "8rem 5rem 5rem",
       position: "relative", overflow: "hidden",
       gap: isMobile ? "2rem" : "4rem",
     }}>
-
-      {/* Background photo */}
-      <div style={{
-        position: "absolute", inset: 0,
-        backgroundImage: `url(${HERO_IMAGE})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center top",
-        filter: "brightness(0.25) saturate(0.8)",
-        zIndex: 0,
-      }} />
-
-      {/* Dégradé */}
-      <div style={{
-        position: "absolute", inset: 0, zIndex: 0,
-        background: isMobile
-          ? "linear-gradient(180deg, rgba(250,248,244,0.98) 0%, rgba(250,248,244,0.90) 100%)"
-          : "linear-gradient(105deg, rgba(250,248,244,0.98) 0%, rgba(250,248,244,0.93) 42%, rgba(250,248,244,0.35) 70%, rgba(250,248,244,0.05) 100%)",
-      }} />
-
-      {/* Dot pattern */}
+      <div style={{ position: "absolute", inset: 0, backgroundImage: `url(${HERO_IMAGE})`, backgroundSize: "cover", backgroundPosition: "center top", filter: "brightness(0.25) saturate(0.8)", zIndex: 0 }} />
+      <div style={{ position: "absolute", inset: 0, zIndex: 0, background: isMobile ? "linear-gradient(180deg, rgba(250,248,244,0.98) 0%, rgba(250,248,244,0.90) 100%)" : "linear-gradient(105deg, rgba(250,248,244,0.98) 0%, rgba(250,248,244,0.93) 42%, rgba(250,248,244,0.35) 70%, rgba(250,248,244,0.05) 100%)" }} />
       <div style={{ position: "absolute", inset: 0, zIndex: 0, backgroundImage: "radial-gradient(circle, #b8860b 1.2px, transparent 1.2px)", backgroundSize: "36px 36px", opacity: 0.05, pointerEvents: "none" }} />
 
-      {/* Gold glow — masqué sur mobile */}
-      {!isMobile && (
-        <div style={{ position: "absolute", width: "500px", height: "500px", borderRadius: "50%", background: "radial-gradient(circle, rgba(240,217,160,0.5) 0%, transparent 65%)", right: "-80px", top: "50%", transform: "translateY(-50%)", pointerEvents: "none", zIndex: 0 }} />
-      )}
-
-      {/* ── Colonne gauche ── */}
+      {/* Colonne gauche */}
       <div style={{ position: "relative", zIndex: 1, animation: "heroFadeUp 0.9s ease forwards" }}>
-        <div style={{
-          display: "inline-flex", alignItems: "center", gap: "0.5rem",
-          background: "#fdf6e3", border: "1px solid #f0d9a0",
-          color: "#b8860b", fontSize: "0.72rem", fontWeight: 700,
-          letterSpacing: "0.1em", textTransform: "uppercase",
-          padding: "0.45rem 1rem", borderRadius: "100px", marginBottom: "1.5rem",
-          flexWrap: "wrap",
-        }}>
+        <div style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", background: "#fdf6e3", border: "1px solid #f0d9a0", color: "#b8860b", fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", padding: "0.45rem 1rem", borderRadius: "100px", marginBottom: "1.5rem", flexWrap: "wrap" }}>
           <span style={{ width: "6px", height: "6px", background: "#b8860b", borderRadius: "50%", display: "inline-block", animation: "pulse 2s infinite", flexShrink: 0 }} />
-          🌍 Startup Africaine · Dakar, Sénégal
+          Startup Africaine · Dakar, Sénégal
         </div>
 
-        <h1 style={{
-          fontFamily: "'Plus Jakarta Sans', sans-serif",
-          fontSize: isMobile ? "clamp(2rem, 9vw, 3rem)" : "clamp(2.8rem, 5vw, 5rem)", // ✅ plus petit sur mobile
-          fontWeight: 800, lineHeight: 1.06,
-          color: "#111110", marginBottom: "1.2rem",
-          wordBreak: "break-word",
-        }}>
+        <h1 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: isMobile ? "clamp(2rem, 9vw, 3rem)" : "clamp(2.8rem, 5vw, 5rem)", fontWeight: 800, lineHeight: 1.06, color: "#111110", marginBottom: "1.2rem", wordBreak: "break-word" }}>
           Votre vision,{" "}
           <em style={{ fontFamily: "'Fraunces', serif", fontStyle: "italic", color: "#b8860b" }}>notre code</em>,
           <br />l'Afrique connectée.
         </h1>
 
-        <p style={{
-          fontSize: "0.95rem", color: "#7a7a74", lineHeight: 1.8,
-          maxWidth: "480px", marginBottom: "2rem",
-        }}>
+        <p style={{ fontSize: "0.95rem", color: "#7a7a74", lineHeight: 1.8, maxWidth: "480px", marginBottom: "2rem" }}>
           Africodex Digital transforme vos idées en solutions numériques percutantes — sites web, applications mobiles et stratégie digitale pensés pour le marché africain.
         </p>
 
@@ -110,10 +70,10 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* ── Colonne droite — cards ── */}
+      {/* Colonne droite */}
       <div style={{ position: "relative", zIndex: 1, display: "flex", flexDirection: "column", gap: "1rem" }}>
         <HeroCard dark>
-          <div style={{ color: "rgba(212,160,23,0.85)", fontSize: "0.72rem", letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: "0.8rem", fontWeight: 700 }}>🚀 Notre Mission</div>
+          <div style={{ color: "rgba(212,160,23,0.85)", fontSize: "0.72rem", letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: "0.8rem", fontWeight: 700 }}>Notre Mission</div>
           <h3 style={{ fontSize: "1.15rem", fontWeight: 700, marginBottom: "0.5rem" }}>Bâtir le numérique africain</h3>
           <p style={{ fontSize: "0.85rem", color: "rgba(255,255,255,0.5)", lineHeight: 1.65 }}>Des solutions digitales sur-mesure adaptées aux réalités et ambitions de l'Afrique d'aujourd'hui.</p>
           <div style={{ display: "flex", gap: "0.6rem", flexWrap: "wrap", marginTop: "1rem" }}>
