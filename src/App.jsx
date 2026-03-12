@@ -2,7 +2,7 @@ import Navbar         from "./components/Navbar";
 import Hero           from "./components/Hero";
 import StatsBand      from "./components/StatsBand";
 import About          from "./components/About";
-import Influenceurs   from "./components/influenceurs";
+import Influenceurs from "./components/influenceurs";
 import RejoignezNous  from "./components/RejoignezNous";
 import Services       from "./components/Services";
 import Realisations   from "./components/Realisations";
