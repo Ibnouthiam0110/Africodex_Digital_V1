@@ -84,13 +84,13 @@ export default function Contact() {
     <section id="contact" style={{ padding: isMobile ? "4rem 1.2rem" : "7rem 5rem", background: "#faf8f4" }}>
       <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: isMobile ? "2.5rem" : "5rem", alignItems: "start" }}>
         <div>
-          <SectionHeader label="Contact" title="Lancons votre<br/>projet <em style='font-family:Fraunces,serif;font-style:italic;color:#b8860b'>ensemble</em>" subtitle="Premiere consultation gratuite. Notre equipe vous repond sous 24h." />
+          <SectionHeader label="Contact" title="Lançons votre<br/>projet <em style='font-family:Fraunces,serif;font-style:italic;color:#b8860b'>ensemble</em>" subtitle="Première consultation gratuite. Notre équipe vous répond sous 24h." />
           <div style={{ display: "flex", flexDirection: "column", gap: "1.2rem", marginTop: "2rem" }}>
             <ContactItem href="mailto:africodexdigital@gmail.com" label="Email" value="africodexdigital@gmail.com"
               icon={<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#b8860b" strokeWidth="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>} />
             <ContactItem href="https://wa.me/33766389311" label="WhatsApp" value="+33 7 66 38 93 11"
               icon={<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#b8860b" strokeWidth="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.18H6.6a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.16 6.16l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.73 17z"/></svg>} />
-            <ContactItem href="#" label="Localisation" value="Dakar, Senegal"
+            <ContactItem href="#" label="Localisation" value="Dakar, Sénégal"
               icon={<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#b8860b" strokeWidth="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>} />
           </div>
         </div>
@@ -119,13 +119,13 @@ export default function Contact() {
               <label style={labelStyle}>Type de projet <span style={{ color: "#c0392b" }}>*</span></label>
               <select name="type" value={form.type} onChange={handleChange} style={{ ...fieldStyle("type"), appearance: "none", cursor: "pointer" }} onFocus={onFocus} onBlur={onBlur("type")}>
                 <option value="">Choisissez...</option>
-                {["Site Web","Application Mobile","E-commerce","Strategie Digitale","UI/UX Design","Formation","Autre"].map(o => <option key={o} value={o}>{o}</option>)}
+                {["Site Web", "Application Mobile", "E-commerce", "Stratégie Digitale", "UI/UX Design", "Formation", "Autre"].map(o => <option key={o} value={o}>{o}</option>)}
               </select>
               {errors.type && <span style={{ fontSize: "0.72rem", color: "#c0392b" }}>Champ obligatoire</span>}
             </div>
             <div style={{ marginBottom: "1.5rem" }}>
               <label style={labelStyle}>Message <span style={{ color: "#c0392b" }}>*</span></label>
-              <textarea name="message" value={form.message} onChange={handleChange} placeholder="Decrivez votre projet, vos besoins..." rows={4} style={{ ...fieldStyle("message"), resize: "vertical" }} onFocus={onFocus} onBlur={onBlur("message")} />
+              <textarea name="message" value={form.message} onChange={handleChange} placeholder="Décrivez votre projet, vos besoins..." rows={4} style={{ ...fieldStyle("message"), resize: "vertical" }} onFocus={onFocus} onBlur={onBlur("message")} />
               {errors.message && <span style={{ fontSize: "0.72rem", color: "#c0392b" }}>Champ obligatoire</span>}
             </div>
             <button type="submit" disabled={status === "sending"} style={{ width: "100%", padding: "1rem", background: btnBg[status] ?? "#111110", color: "#fff", border: "none", borderRadius: "8px", fontFamily: "inherit", fontWeight: 700, fontSize: "0.9rem", letterSpacing: "0.06em", cursor: status === "sending" ? "not-allowed" : "pointer", transition: "background 0.3s", display: "flex", alignItems: "center", justifyContent: "center", gap: "0.6rem" }}
@@ -135,8 +135,8 @@ export default function Contact() {
               {status === "sending" && <span style={{ width: "16px", height: "16px", border: "2px solid rgba(255,255,255,0.4)", borderTopColor: "#fff", borderRadius: "50%", display: "inline-block", animation: "spin 0.8s linear infinite" }} />}
               {status === "idle"    && "Envoyer le message →"}
               {status === "sending" && "Envoi en cours..."}
-              {status === "success" && "Message envoye ! On vous repond sous 24h."}
-              {status === "error"   && "Erreur — verifiez la configuration EmailJS"}
+              {status === "success" && "Message envoyé ! On vous répond sous 24h."}
+              {status === "error"   && "Erreur — vérifiez la configuration EmailJS"}
             </button>
           </form>
         </div>

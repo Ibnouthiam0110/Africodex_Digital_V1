@@ -9,7 +9,7 @@ const ServiceCard = ({ service, featured = false, onOpen }) => {
     <div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      style={{ background: featured ? "#111110" : hovered ? "#fff" : "#faf8f4", border: `1px solid ${featured ? "#111110" : "#e5dfd3"}`, borderRadius: "18px", padding: "2rem", transition: "transform 0.3s, box-shadow 0.3s, background 0.3s", transform: hovered ? "translateY(-6px)" : "translateY(0)", boxShadow: hovered ? "0 16px 48px rgba(0,0,0,0.1)" : "none", cursor: "default", display: "flex", flexDirection: "column" }}
+      style={{ background: featured ? "#111110" : hovered ? "#fff" : "#faf8f4", border: "1px solid " + (featured ? "#111110" : "#e5dfd3"), borderRadius: "18px", padding: "2rem", transition: "transform 0.3s, box-shadow 0.3s, background 0.3s", transform: hovered ? "translateY(-6px)" : "translateY(0)", boxShadow: hovered ? "0 16px 48px rgba(0,0,0,0.1)" : "none", cursor: "default", display: "flex", flexDirection: "column" }}
     >
       <div style={{ width: "52px", height: "52px", background: featured ? "rgba(212,160,23,0.15)" : "#fdf6e3", borderRadius: "14px", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "1.5rem" }}>
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#b8860b" strokeWidth="2">
@@ -22,7 +22,11 @@ const ServiceCard = ({ service, featured = false, onOpen }) => {
       <div style={{ fontSize: "1.1rem", fontWeight: 700, color: featured ? "#fff" : "#111110", marginBottom: "0.8rem" }}>{service.name}</div>
       <p style={{ fontSize: "0.86rem", color: featured ? "rgba(255,255,255,0.45)" : "#7a7a74", lineHeight: 1.75, flexGrow: 1 }}>{service.shortDesc}</p>
       <button onClick={() => onOpen(service)} style={{ display: "inline-flex", alignItems: "center", gap: "0.4rem", fontSize: "0.8rem", fontWeight: 700, color: "#b8860b", marginTop: "1.5rem", background: "none", border: "none", cursor: "pointer", padding: 0 }}>
-        En savoir plus →
+        En savoir plus
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#b8860b" strokeWidth="2.5">
+          <line x1="5" y1="12" x2="19" y2="12"/>
+          <polyline points="12 5 19 12 12 19"/>
+        </svg>
       </button>
     </div>
   );
@@ -41,7 +45,7 @@ export default function Services() {
     <section id="services" style={{ padding: isMobile ? "4rem 1.2rem" : "7rem 5rem", background: "#fff" }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", flexWrap: "wrap", gap: "1.5rem", marginBottom: "3rem" }}>
         <SectionHeader label="Expertise" title="Nos <em style='font-family:Fraunces,serif;font-style:italic;color:#b8860b'>services</em>" />
-        {!isMobile && <p style={{ fontSize: "0.92rem", color: "#7a7a74", maxWidth: "280px", textAlign: "right", lineHeight: 1.7 }}>Solutions completes pour votre transformation numerique.</p>}
+        {!isMobile && <p style={{ fontSize: "0.92rem", color: "#7a7a74", maxWidth: "280px", textAlign: "right", lineHeight: 1.7 }}>Solutions complètes pour votre transformation numérique.</p>}
       </div>
       <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "repeat(3, 1fr)", gap: "1.2rem" }}>
         {services.map((s, i) => <ServiceCard key={s.id} service={s} featured={i === 1} onOpen={setActiveService} />)}

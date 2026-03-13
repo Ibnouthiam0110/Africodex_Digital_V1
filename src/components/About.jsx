@@ -28,20 +28,20 @@ export default function About() {
       <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: isMobile ? "2.5rem" : "6rem", alignItems: "center" }}>
         <div style={{ position: "relative", height: isMobile ? "260px" : "460px" }}>
           <div style={{ width: "100%", height: "100%", borderRadius: "20px", overflow: "hidden", boxShadow: "0 16px 56px rgba(0,0,0,0.13)" }}>
-            <img src={TeamImage} alt="Equipe Africodex Digital" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+            <img src={TeamImage} alt="Équipe Africodex Digital" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
             <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, transparent 50%, rgba(184,134,11,0.15) 100%)", borderRadius: "20px" }} />
           </div>
         </div>
         <div>
           <SectionHeader
             label="Notre Histoire"
-            title="Ancres en Afrique,<br/>tournes vers <em style='font-family:Fraunces,serif;font-style:italic;color:#b8860b'>demain</em>"
-            subtitle="Africodex Digital est nee d'une conviction simple : l'Afrique merite des solutions numeriques a la hauteur de son potentiel."
+            title="Ancrés en Afrique,<br/>tournés vers <em style='font-family:Fraunces,serif;font-style:italic;color:#b8860b'>demain</em>"
+            subtitle="Africodex Digital est née d'une conviction simple : l'Afrique mérite des solutions numériques à la hauteur de son potentiel."
           />
           <div style={{ display: "flex", flexDirection: "column", gap: "1rem", marginTop: "2rem" }}>
-            <AboutItem title="Expertise locale, standards globaux" desc="Les defis du marche africain compris, les meilleures pratiques internationales appliquees." />
-            <AboutItem title="Equipe passionnee et engagee" desc="Des talents africains dedies a construire des produits qui changent concretement la vie des utilisateurs." />
-            <AboutItem title="Partenariat sur le long terme" desc="Nous ne livrons pas un produit, nous batissons une relation. Votre succes est notre reussite." />
+            <AboutItem title="Expertise locale, standards globaux" desc="Les défis du marché africain compris, les meilleures pratiques internationales appliquées." />
+            <AboutItem title="Équipe passionnée et engagée" desc="Des talents africains dédiés à construire des produits qui changent concrètement la vie des utilisateurs." />
+            <AboutItem title="Partenariat sur le long terme" desc="Nous ne livrons pas un produit, nous bâtissons une relation. Votre succès est notre réussite." />
           </div>
         </div>
       </div>

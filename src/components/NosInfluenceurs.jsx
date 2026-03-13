@@ -7,8 +7,8 @@ const INFLUENCEURS = [
     nom: "Prénom Nom",
     role: "Influenceur Tech",
     description: "Spécialiste tech et innovation africaine. Partage nos solutions auprès de sa communauté et génère de la visibilité pour nos clients.",
-    reseau: "Instagram",
-    abonnes: "12K",
+    reseau: "",
+    abonnes: "",
     photo: null,
   },
   {
@@ -16,8 +16,8 @@ const INFLUENCEURS = [
     nom: "Prénom Nom",
     role: "Créateur de contenu",
     description: "Expert en contenu digital et storytelling. Présente nos réalisations avec authenticité et engage une audience qualifiée.",
-    reseau: "TikTok",
-    abonnes: "45K",
+    reseau: "",
+    abonnes: "",
     photo: null,
   },
   {
@@ -25,8 +25,8 @@ const INFLUENCEURS = [
     nom: "Prénom Nom",
     role: "Entrepreneur digital",
     description: "Entrepreneur et formateur, il recommande nos services à son réseau de PME africaines cherchant à se digitaliser.",
-    reseau: "LinkedIn",
-    abonnes: "8K",
+    reseau: "",
+    abonnes: "",
     photo: null,
   },
 ];
@@ -62,7 +62,7 @@ const InfluenceurCard = ({ item }) => {
             </svg>
           </div>
         )}
-        <div style={{ position: "absolute", top: "12px", right: "12px", background: "#111110", color: "#fff", fontSize: "0.68rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", padding: "0.3rem 0.8rem", borderRadius: "100px" }}>
+        <div style={{ position: "absolute", top: "12px", right: "12px",  color: "#fff", fontSize: "0.68rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", padding: "0.3rem 0.8rem", borderRadius: "100px" }}>
           {item.reseau} · {item.abonnes}
         </div>
       </div>
@@ -89,9 +89,9 @@ export default function Influenceurs() {
     <section id="influenceurs" style={{ padding: isMobile ? "4rem 1.2rem" : "7rem 5rem", background: "#faf8f4" }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", flexWrap: "wrap", gap: "1.5rem", marginBottom: "3.5rem" }}>
         <SectionHeader
-          label="Nos Ambassadeurs"
-          title="Ils parlent de <em style='font-family:Fraunces,serif;font-style:italic;color:#b8860b'>nous</em>"
-          subtitle="Des créateurs de contenu et entrepreneurs qui partagent notre vision du numérique africain."
+          label="Nos Influenceurs"
+          title="Ils parleront de <em style='font-family:Fraunces,serif;font-style:italic;color:#b8860b'>vous</em>"
+          subtitle="Des créateurs de contenu et entrepreneurs qui partagent notre vision du numérique africain et qui sont prêts à rendre votre business plus visible."
         />
       </div>
       <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "repeat(3, 1fr)", gap: "1.8rem" }}>

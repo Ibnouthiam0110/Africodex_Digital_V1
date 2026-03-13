@@ -13,7 +13,7 @@ function useIsMobile() {
 }
 
 const WhyCard = ({ item, wide = false }) => (
-  <div style={{ background: wide ? "#111110" : "#fff", border: `1px solid ${wide ? "#111110" : "#e5dfd3"}`, borderRadius: "16px", padding: "1.8rem", gridColumn: wide ? "1 / -1" : undefined, transition: "transform 0.3s, box-shadow 0.3s" }}
+  <div style={{ background: wide ? "#111110" : "#fff", border: "1px solid " + (wide ? "#111110" : "#e5dfd3"), borderRadius: "16px", padding: "1.8rem", gridColumn: wide ? "1 / -1" : undefined, transition: "transform 0.3s, box-shadow 0.3s" }}
     onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-4px)"; e.currentTarget.style.boxShadow = "0 12px 36px rgba(0,0,0,0.08)"; }}
     onMouseLeave={e => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "none"; }}
   >
@@ -58,7 +58,7 @@ export function Process() {
   const isMobile = useIsMobile();
   return (
     <section id="process" style={{ padding: isMobile ? "4rem 1.2rem" : "7rem 5rem", background: "#fff" }}>
-      <SectionHeader label="Notre approche" title="De l'idee au <em style='font-family:Fraunces,serif;font-style:italic;color:#b8860b'>lancement</em>" subtitle="Un processus clair, transparent et collaboratif pour des resultats a la hauteur de vos ambitions." centered />
+      <SectionHeader label="Notre approche" title="De l'idée au <em style='font-family:Fraunces,serif;font-style:italic;color:#b8860b'>lancement</em>" subtitle="Un processus clair, transparent et collaboratif pour des résultats à la hauteur de vos ambitions." centered />
       <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr 1fr" : "repeat(4, 1fr)", gap: "2rem", marginTop: "4rem", position: "relative" }}>
         {!isMobile && <div style={{ position: "absolute", top: "27px", left: "13%", right: "13%", height: "1.5px", background: "linear-gradient(90deg, #f0d9a0, #b8860b, #f0d9a0)" }} />}
         {processSteps.map(step => <ProcessStep key={step.num} step={step} />)}

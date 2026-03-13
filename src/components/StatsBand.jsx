@@ -2,9 +2,9 @@ import { useEffect, useRef, useState } from "react";
 
 const STATS = [
   { target: 6,   suffix: "+",  label: "Services digitaux" },
-  { target: 100, suffix: "%",  label: "Oriente resultats" },
+  { target: 100, suffix: "%",  label: "Orienté résultats" },
   { target: 54,  suffix: "",   label: "Pays africains" },
-  { target: 24,  suffix: "h",  label: "Reponse garantie" },
+  { target: 24,  suffix: "h",  label: "Réponse garantie" },
 ];
 
 function AnimatedCounter({ target, suffix, label, visible }) {

@@ -22,7 +22,7 @@ export const services = [
     features: [
       { title: "iOS & Android natifs", desc: "Applications natives ou cross-platform (React Native / Flutter) selon vos besoins et votre budget." },
       { title: "Paiements mobiles locaux", desc: "Intégration Wave, Orange Money, Free Money et autres solutions de paiement africaines." },
-      { title: "Optimisée faible connexion", desc: "Architecture pensée pour fonctionner avec des connexions 2G/3G, mode hors-ligne inclus." },
+      { title: "Optimisée pour faible connexion", desc: "Architecture pensée pour fonctionner avec des connexions 2G/3G, mode hors-ligne inclus." },
       { title: "Publication sur les stores", desc: "Accompagnement complet pour la publication sur Google Play Store et Apple App Store." },
       { title: "Notifications & analytics", desc: "Push notifications, suivi des utilisateurs et tableau de bord analytics en temps réel." },
     ],
@@ -51,7 +51,7 @@ export const services = [
       { title: "Audit digital complet", desc: "Analyse de votre présence en ligne actuelle, points forts, faiblesses et recommandations concrètes." },
       { title: "Réseaux sociaux", desc: "Création et animation de vos pages Facebook, Instagram, LinkedIn et TikTok avec une ligne éditoriale claire." },
       { title: "SEO & visibilité Google", desc: "Optimisation pour apparaître en tête des résultats de recherche sur vos mots-clés stratégiques." },
-      { title: "Email marketing", desc: "Campagnes emailings ciblées pour fidéliser vos clients et booster vos ventes régulièrement." },
+      { title: "Email marketing", desc: "Campagnes d'emailing ciblées pour fidéliser vos clients et booster vos ventes régulièrement." },
       { title: "Reporting mensuel", desc: "Rapport de performance clair chaque mois : visites, conversions, ROI et axes d'amélioration." },
     ],
   },
@@ -108,6 +108,10 @@ export const whyItems = [
   {
     title: "Prix accessibles",
     desc: "Tarifs adaptés aux réalités africaines sans compromis sur l'excellence.",
+  },
+  {
+    title: "Paiement en plusieurs fois",
+    desc: "Jusqu'à 5x pour un site web, jusqu'à 10x pour une application mobile. Sans frais supplémentaires.",
   },
 ];
 
