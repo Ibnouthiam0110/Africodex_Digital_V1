@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import SectionHeader from "./SectionHeader";
+import influenceurX from "../data/influenceurX.js";
 
 const INFLUENCEURS = [
   {
@@ -7,10 +8,10 @@ const INFLUENCEURS = [
     nom: "Punchtchineur",
     role: "Influenceur Social",
     description:
-      "Créateur de contenu actif sur X, il partage des sujets liés au numérique, à l’innovation et aux tendances digitales. Sa communauté engagée contribue à amplifier la visibilité des projets et initiatives que nous accompagnons.",
+      "Créateur de contenu actif sur X, il partage des sujets liés au numérique, à l'innovation et aux tendances digitales. Sa communauté engagée contribue à amplifier la visibilité des projets et initiatives que nous accompagnons.",
     reseau: "X",
     abonnes: "361 848 abonnés",
-    photo: "src/images/influenceur-x.jpeg",
+    photo: influenceurX,
   },
   {
     id: 2,
@@ -51,22 +52,36 @@ const InfluenceurCard = ({ item }) => {
         boxShadow: hovered
           ? "0 25px 60px rgba(0,0,0,0.12)"
           : "0 3px 15px rgba(0,0,0,0.06)",
+        display: "flex",
+        flexDirection: "column",
       }}
     >
-      {/* Photo */}
+      {/* Zone Photo */}
       <div
         style={{
           height: "320px",
-          background: item.photo
-            ? `url(${item.photo}) center top / cover`
-            : "linear-gradient(135deg, #fdf6e3 0%, #f0d9a0 100%)",
+          position: "relative",
+          overflow: "hidden",
+          background: "linear-gradient(135deg, #fdf6e3 0%, #f0d9a0 100%)",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          position: "relative",
+          flexShrink: 0,
         }}
       >
-        {!item.photo && (
+        {item.photo ? (
+          <img
+            src={item.photo}
+            alt={item.nom}
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              objectPosition: "center top",
+              display: "block",
+            }}
+          />
+        ) : (
           <div
             style={{
               width: "90px",
@@ -93,7 +108,7 @@ const InfluenceurCard = ({ item }) => {
           </div>
         )}
 
-        {/* Badge X */}
+        {/* Badge réseau */}
         {item.reseau && (
           <div
             style={{
@@ -114,13 +129,12 @@ const InfluenceurCard = ({ item }) => {
             <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
               <path d="M18.244 2H21l-6.56 7.49L22 22h-6.828l-5.345-6.99L3.8 22H1l7.02-8.02L2 2h6.828l4.82 6.3L18.244 2z" />
             </svg>
-
             <span>{item.abonnes}</span>
           </div>
         )}
       </div>
 
-      {/* Contenu */}
+      {/* Zone Texte */}
       <div style={{ padding: "2.4rem" }}>
         <div
           style={{

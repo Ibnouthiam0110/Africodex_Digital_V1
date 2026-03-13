@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import SectionHeader from "./SectionHeader";
 import TeamImage from "../images/AFRICODEX_Image.jpeg";
 
+
+
 const AboutItem = ({ title, desc }) => (
   <div style={{ display: "flex", alignItems: "flex-start", gap: "0.9rem", padding: "1.3rem", background: "#fff", borderRadius: "12px", border: "1px solid #e5dfd3", transition: "border-color 0.3s" }}
     onMouseEnter={e => e.currentTarget.style.borderColor = "#f0d9a0"}
