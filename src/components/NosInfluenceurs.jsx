@@ -5,10 +5,10 @@ import influenceurX from "../data/influenceurX.js";
 const INFLUENCEURS = [
   {
     id: 1,
-    nom: "Punchtchineur",
+    nom: "Mouhamed SARR",
     role: "Influenceur Social",
     description:
-      "Créateur de contenu actif sur X, il partage des sujets liés au numérique, à l'innovation et aux tendances digitales. Sa communauté engagée contribue à amplifier la visibilité des projets et initiatives que nous accompagnons.",
+      "Mouhamed Sarr est un influenceur social engagé et créateur de contenu actif sur X. À travers ses publications, il aborde des enjeux de société en suscitant la réflexion et le débat au sein de sa communauté. Par sa capacité à mobiliser, sensibiliser et fédérer autour de thématiques d'intérêt général, il contribue à amplifier la visibilité de causes et d'initiatives à portée publique et sociale.",
     reseau: "X",
     abonnes: "361 848 abonnés",
     photo: influenceurX,
@@ -54,13 +54,40 @@ const InfluenceurCard = ({ item }) => {
           : "0 3px 15px rgba(0,0,0,0.06)",
         display: "flex",
         flexDirection: "column",
+        position: "relative",
       }}
     >
+      {/* Badge réseau — en haut à droite, collé sur le bord de la carte */}
+      {item.reseau && (
+        <div
+          style={{
+            position: "absolute",
+            top: "1px",
+            right: "0px",
+            background: "#000",
+            color: "#fff",
+            fontSize: "0.85rem",
+            fontWeight: 700,
+            padding: "0.5rem 1rem",
+            borderRadius: "10px 0 0 10px",
+            display: "flex",
+            alignItems: "center",
+            gap: "8px",
+            zIndex: 3,
+            boxShadow: "-4px 4px 12px rgba(0,0,0,0.2)",
+          }}
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
+            <path d="M18.244 2H21l-6.56 7.49L22 22h-6.828l-5.345-6.99L3.8 22H1l7.02-8.02L2 2h6.828l4.82 6.3L18.244 2z" />
+          </svg>
+          <span>{item.abonnes}</span>
+        </div>
+      )}
+
       {/* Zone Photo */}
       <div
         style={{
           height: "320px",
-          position: "relative",
           overflow: "hidden",
           background: "linear-gradient(135deg, #fdf6e3 0%, #f0d9a0 100%)",
           display: "flex",
@@ -105,31 +132,6 @@ const InfluenceurCard = ({ item }) => {
               <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
               <circle cx="12" cy="7" r="4" />
             </svg>
-          </div>
-        )}
-
-        {/* Badge réseau */}
-        {item.reseau && (
-          <div
-            style={{
-              position: "absolute",
-              top: "16px",
-              right: "16px",
-              background: "#000",
-              color: "#fff",
-              fontSize: "0.9rem",
-              fontWeight: 700,
-              padding: "0.5rem 1rem",
-              borderRadius: "10px",
-              display: "flex",
-              alignItems: "center",
-              gap: "8px",
-            }}
-          >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
-              <path d="M18.244 2H21l-6.56 7.49L22 22h-6.828l-5.345-6.99L3.8 22H1l7.02-8.02L2 2h6.828l4.82 6.3L18.244 2z" />
-            </svg>
-            <span>{item.abonnes}</span>
           </div>
         )}
       </div>
