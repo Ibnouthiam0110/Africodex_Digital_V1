@@ -14,7 +14,7 @@ export default function Footer() {
         AFRICODEX <span style={{ color: "#b8860b" }}>DIGITAL</span>
       </div>
       <p style={{ fontSize: "0.82rem", color: "rgba(255,255,255,0.32)" }}>
-        2025 Africodex Digital. Tous droits réservés. Dakar, Sénégal
+        2026 Africodex Digital. Tous droits réservés. Dakar, Sénégal
       </p>
       <div style={{ display: "flex", gap: "1.5rem", flexWrap: "wrap" }}>
         {["Mentions légales", "Confidentialité", "LinkedIn"].map(link => (
