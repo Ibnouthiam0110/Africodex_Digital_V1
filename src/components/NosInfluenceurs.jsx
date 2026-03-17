@@ -22,7 +22,7 @@ const INFLUENCEURS = [
     description:
       "Lelia Sagna est une influenceuse dynamique et inspirante, active sur TikTok et Snapchat. À travers ses contenus, elle partage avec authenticité des conseils beauté ainsi que des recommandations autour de l'entrepreneuriat. Entre esthétique et ambition, Lelia incarne une nouvelle génération de créatrices qui allient style, confiance en soi et esprit business, en accompagnant sa communauté vers une meilleure version d'elle-même, tant sur le plan personnel que professionnel.",
     reseau: "TikTok",
-    abonnes: "14 700 abonnés",
+    abonnes: "24 700 abonnés",
     photo: Leliaphoto,
     photoPosition: "center", 
   },
