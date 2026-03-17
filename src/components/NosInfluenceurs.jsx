@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import SectionHeader from "./SectionHeader";
 import influenceurX from "../data/influenceurX.js";
+import Leliaphoto from "../data/Leliaphoto.js";
 
 const INFLUENCEURS = [
   {
@@ -12,16 +13,18 @@ const INFLUENCEURS = [
     reseau: "X",
     abonnes: "361 848 abonnés",
     photo: influenceurX,
+    photoPosition: "center -0%",
   },
   {
     id: 2,
-    nom: "Prénom Nom",
-    role: "Créateur de contenu",
+    nom: "Lelia Sagna",
+    role: "Créatrice de contenu",
     description:
-      "Expert en contenu digital et storytelling. Présente nos réalisations avec authenticité et engage une audience qualifiée.",
-    reseau: "",
-    abonnes: "",
-    photo: null,
+      "Lelia Sagna est une influenceuse dynamique et inspirante, active sur TikTok et Snapchat. À travers ses contenus, elle partage avec authenticité des conseils beauté ainsi que des recommandations autour de l'entrepreneuriat. Entre esthétique et ambition, Lelia incarne une nouvelle génération de créatrices qui allient style, confiance en soi et esprit business, en accompagnant sa communauté vers une meilleure version d'elle-même, tant sur le plan personnel que professionnel.",
+    reseau: "TikTok",
+    abonnes: "14 700 abonnés",
+    photo: Leliaphoto,
+    photoPosition: "center", 
   },
   {
     id: 3,
@@ -34,6 +37,24 @@ const INFLUENCEURS = [
     photo: null,
   },
 ];
+
+const BadgeIcon = ({ reseau }) => {
+  if (reseau === "X") {
+    return (
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
+        <path d="M18.244 2H21l-6.56 7.49L22 22h-6.828l-5.345-6.99L3.8 22H1l7.02-8.02L2 2h6.828l4.82 6.3L18.244 2z" />
+      </svg>
+    );
+  }
+  if (reseau === "TikTok") {
+    return (
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
+        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.17 8.17 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z" />
+      </svg>
+    );
+  }
+  return null;
+};
 
 const InfluenceurCard = ({ item }) => {
   const [hovered, setHovered] = useState(false);
@@ -57,7 +78,7 @@ const InfluenceurCard = ({ item }) => {
         position: "relative",
       }}
     >
-      {/* Badge réseau — en haut à droite, collé sur le bord de la carte */}
+      {/* Badge réseau */}
       {item.reseau && (
         <div
           style={{
@@ -77,9 +98,7 @@ const InfluenceurCard = ({ item }) => {
             boxShadow: "-4px 4px 12px rgba(0,0,0,0.2)",
           }}
         >
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
-            <path d="M18.244 2H21l-6.56 7.49L22 22h-6.828l-5.345-6.99L3.8 22H1l7.02-8.02L2 2h6.828l4.82 6.3L18.244 2z" />
-          </svg>
+          <BadgeIcon reseau={item.reseau} />
           <span>{item.abonnes}</span>
         </div>
       )}
@@ -104,7 +123,7 @@ const InfluenceurCard = ({ item }) => {
               width: "100%",
               height: "100%",
               objectFit: "cover",
-              objectPosition: "center top",
+              objectPosition: item.photoPosition || "center top",
               display: "block",
             }}
           />
