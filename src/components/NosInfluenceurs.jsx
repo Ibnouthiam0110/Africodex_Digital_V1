@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import SectionHeader from "./SectionHeader";
 import influenceurX from "../data/influenceurX.js";
 import Leliaphoto from "../data/Leliaphoto.js";
+import Fatou from "../data/Fatou.js";
 
 const INFLUENCEURS = [
   {
@@ -28,13 +29,14 @@ const INFLUENCEURS = [
   },
   {
     id: 3,
-    nom: "Prénom Nom",
-    role: "Entrepreneur digital",
+    nom: " Fatou lebou Mbaye",
+    role: " Influenceuse",
     description:
-      "Entrepreneur et formateur, il recommande nos services à son réseau de PME africaines cherchant à se digitaliser.",
-    reseau: "",
-    abonnes: "",
-    photo: null,
+      "Fatou Lebou Mbaye est une influenceuse beauté et maquilleuse professionnelle reconnue, à la tête de son propre salon. Son talent et son exigence lui valent une visibilité à l’échelle africaine, avec des nominations au Rwanda et à Ouagadougou.Créative, engagée et incontournable, elle est le choix idéal pour toute marque souhaitant s’imposer dans l’univers de la beauté.",
+    reseau: "TikTok",
+    abonnes: "49 900 abonnés",
+    photo: Fatou,
+    photoPosition: "center -0%", 
   },
 ];
 
