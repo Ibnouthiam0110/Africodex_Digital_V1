@@ -28,7 +28,7 @@ export default function App() {
         <WhyUs />
         <Process />
         <Contact />
-        <Route path="/politique-confidentialite" element={<PolitiqueConfidentialite />} />
+        <PolitiqueConfidentialite />
       </main>
       <Footer />
       <ScrollToTop />
