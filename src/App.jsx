@@ -10,6 +10,7 @@ import { WhyUs, Process } from "./components/WhyAndProcess";
 import Contact        from "./components/Contact";
 import Footer         from "./components/Footer";
 import ScrollToTop    from "./components/ScrollToTop";
+import PolitiqueConfidentialite from "./components/PolitiqueConfidentialite";
 import "./styles/global.css";
 
 export default function App() {
@@ -27,6 +28,7 @@ export default function App() {
         <WhyUs />
         <Process />
         <Contact />
+        <Route path="/politique-confidentialite" element={<PolitiqueConfidentialite />} />
       </main>
       <Footer />
       <ScrollToTop />

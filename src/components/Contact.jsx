@@ -128,6 +128,17 @@ export default function Contact() {
               <textarea name="message" value={form.message} onChange={handleChange} placeholder="Décrivez votre projet, vos besoins..." rows={4} style={{ ...fieldStyle("message"), resize: "vertical" }} onFocus={onFocus} onBlur={onBlur("message")} />
               {errors.message && <span style={{ fontSize: "0.72rem", color: "#c0392b" }}>Champ obligatoire</span>}
             </div>
+            <div style={{ background: "#fdf6e3", border: "1px solid #e8d89a", borderRadius: "8px", padding: "0.9rem 1.1rem", marginBottom: "1.5rem", display: "flex", gap: "0.7rem", alignItems: "flex-start" }}>
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#b8860b" strokeWidth="2" style={{ flexShrink: 0, marginTop: "2px" }}>
+    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+  </svg>
+  <p style={{ fontSize: "0.78rem", color: "#5a4a1a", lineHeight: 1.6, margin: 0 }}>
+    Ces informations sont utilisées <strong>uniquement pour vous recontacter</strong> suite à votre demande. Elles ne sont jamais revendues ni partagées avec des tiers.{" "}
+    <a href="/politique-confidentialite" style={{ color: "#b8860b", textDecoration: "underline", fontWeight: 600 }}>
+      Lire notre politique de confidentialité
+    </a>
+  </p>
+</div>
             <button type="submit" disabled={status === "sending"} style={{ width: "100%", padding: "1rem", background: btnBg[status] ?? "#111110", color: "#fff", border: "none", borderRadius: "8px", fontFamily: "inherit", fontWeight: 700, fontSize: "0.9rem", letterSpacing: "0.06em", cursor: status === "sending" ? "not-allowed" : "pointer", transition: "background 0.3s", display: "flex", alignItems: "center", justifyContent: "center", gap: "0.6rem" }}
               onMouseEnter={e => { if (status === "idle") e.currentTarget.style.background = "#b8860b"; }}
               onMouseLeave={e => { if (status === "idle") e.currentTarget.style.background = "#111110"; }}
