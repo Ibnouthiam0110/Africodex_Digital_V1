@@ -130,7 +130,16 @@ export default function RejoignezNous() {
             <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
           </svg>
         </div>
-
+        <div style={{ background: "#fdf6e3", border: "1px solid #e8d89a", borderRadius: "8px", padding: "0.9rem 1.1rem", marginBottom: "1.5rem", textAlign: "center" }}>
+  <p style={{ fontSize: "0.82rem", color: "#5a4a1a", lineHeight: 1.6, margin: 0 }}>
+    <strong>Africodex Digital</strong> est une agence légitime enregistrée à Dakar, Sénégal. 
+    Nous ne demandons jamais de paiement pour postuler. 
+    Toute candidature se fait uniquement par email à{" "}
+    <a href="mailto:africodexdigital@gmail.com" style={{ color: "#b8860b" }}>
+      africodexdigital@gmail.com
+    </a>
+  </p>
+</div>
         <h3 style={{ fontSize: "1.4rem", fontWeight: 800, color: "#111110", marginBottom: "0.8rem" }}>
           Envoyez votre candidature
         </h3>
