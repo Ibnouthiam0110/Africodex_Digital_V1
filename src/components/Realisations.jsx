@@ -8,9 +8,9 @@ const TEMPLATES = [
   {
     id: 1,
     title: "HotGyaal",
-    category: "Site Vitrine",
+    category: "E-commerce",
     tag: "Disponible",
-    desc: "Site vitrine moderne avec une identité forte, galerie visuelle et expérience utilisateur soignée.",
+    desc: "Site E-commerce moderne avec une identité forte, galerie visuelle et expérience utilisateur soignée.",
     tech: ["React", "Design UI", "Responsive"],
     color: "#fff5f5",
     accent: "#e11d48",
