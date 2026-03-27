@@ -6,6 +6,7 @@ const NAV_LINKS = [
   ["#services",     "Services"],
   ["#realisations", "Realisations"],
   ["#process",      "Approche"],
+  ["#blog",         "Blog"],       // ← AJOUTÉ
   ["#contact",      "Contact"],
 ];
 
