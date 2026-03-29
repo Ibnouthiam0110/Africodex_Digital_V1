@@ -133,7 +133,7 @@ const InfluenceurCard = ({ item }) => {
         />
       </div>
 
-      <div style={{ padding: "2.4rem" }}>
+      <div style={{ padding: window.innerWidth < 768 ? "1.5rem" : "2.4rem" }}>
         <div style={{ color: "#b8860b", fontWeight: 700 }}>
           {item.role}
         </div>
@@ -143,7 +143,6 @@ const InfluenceurCard = ({ item }) => {
         <p
   style={{
     color: "#7a7a74",
-    maxWidth: "500px",     // limite largeur du texte
     margin: "0 auto",      // centre
     lineHeight: "1.6",     // lisibilité
     padding: "0 10px",     // évite que ça touche les bords sur mobile
@@ -212,7 +211,7 @@ export default function Influenceurs() {
            <div
               key={item.id}
               style={{
-              minWidth: window.innerWidth < 768 ? "85%" : "320px",
+             minWidth: window.innerWidth < 768 ? "92%" : "320px",
                 scrollSnapAlign: "start", // 🔥 aligne au début
 
                 
