@@ -140,7 +140,17 @@ const InfluenceurCard = ({ item }) => {
         <h3 style={{ fontSize: "1.5rem", fontWeight: 800 }}>
           {item.nom}
         </h3>
-        <p style={{ color: "#7a7a74" }}>{item.description}</p>
+        <p
+  style={{
+    color: "#7a7a74",
+    maxWidth: "500px",     // limite largeur du texte
+    margin: "0 auto",      // centre
+    lineHeight: "1.6",     // lisibilité
+    padding: "0 10px",     // évite que ça touche les bords sur mobile
+  }}
+>
+  {item.description}
+</p>
       </div>
     </div>
   );
