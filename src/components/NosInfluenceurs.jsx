@@ -1,8 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import SectionHeader from "./SectionHeader";
 import influenceurX from "../data/influenceurX.js";
 import Leliaphoto from "../data/Leliaphoto.js";
 import Fatou from "../data/Fatou.js";
+import Aissatou from "../data/Aissatou.js";
 
 const INFLUENCEURS = [
   {
@@ -10,7 +11,7 @@ const INFLUENCEURS = [
     nom: "Mouhamed SARR",
     role: "Influenceur Social",
     description:
-      "Mouhamed Sarr est un influenceur social engagé et créateur de contenu actif sur X. À travers ses publications, il aborde des enjeux de société en suscitant la réflexion et le débat au sein de sa communauté. Par sa capacité à mobiliser, sensibiliser et fédérer autour de thématiques d'intérêt général, il contribue à amplifier la visibilité de causes et d'initiatives à portée publique et sociale.",
+      "Mouhamed Sarr est un influenceur social engagé et créateur de contenu actif sur X. À travers ses publications, il aborde des enjeux de société en suscitant la réflexion et le débat au sein de sa communauté. Par sa capacité à mobiliser, sensibiliser et fédérer autour de thématiques d’intérêt général, il contribue à amplifier la visibilité de causes et d’initiatives à portée publique et sociale.",
     reseau: "X",
     abonnes: "361 848 abonnés",
     photo: influenceurX,
@@ -21,22 +22,33 @@ const INFLUENCEURS = [
     nom: "Lelia Sagna",
     role: "Créatrice de contenu",
     description:
-      "Lelia Sagna est une influenceuse dynamique et inspirante, active sur TikTok et Snapchat. À travers ses contenus, elle partage avec authenticité des conseils beauté ainsi que des recommandations autour de l'entrepreneuriat. Entre esthétique et ambition, Lelia incarne une nouvelle génération de créatrices qui allient style, confiance en soi et esprit business, en accompagnant sa communauté vers une meilleure version d'elle-même, tant sur le plan personnel que professionnel.",
+      "Lelia Sagna est une influenceuse dynamique et inspirante, active sur TikTok et Snapchat. À travers ses contenus, elle partage avec authenticité des conseils beauté ainsi que des recommandations autour de l’entrepreneuriat.Entre esthétique et ambition, Lelia incarne une nouvelle génération de créatrices qui allient style, confiance en soi et esprit business, en accompagnant sa communauté vers une meilleure version d’elle-même, tant sur le plan personnel que professionnel.",
     reseau: "TikTok",
     abonnes: "24 700 abonnés",
     photo: Leliaphoto,
-    photoPosition: "center", 
+    photoPosition: "center",
   },
   {
     id: 3,
-    nom: " Fatou lebou Mbaye",
-    role: " Influenceuse",
+    nom: "Fatou lebou Mbaye",
+    role: "Créatrice de Contenu",
     description:
       "Fatou Lebou Mbaye est une influenceuse beauté et maquilleuse professionnelle reconnue, à la tête de son propre salon. Son talent et son exigence lui valent une visibilité à l’échelle africaine, avec des nominations au Rwanda et à Ouagadougou.Créative, engagée et incontournable, elle est le choix idéal pour toute marque souhaitant s’imposer dans l’univers de la beauté.",
     reseau: "TikTok",
     abonnes: "49 900 abonnés",
     photo: Fatou,
-    photoPosition: "center -0%", 
+    photoPosition: "center -0%",
+  },
+  {
+    id: 4,
+    nom: "Mme Aissatou Barry",
+    role: "Créatrice de Contenu",
+    description:
+      "Mme Aissatou Barry est une créatrice de contenu culinaire reconnue pour l’authenticité de ses plats, sa bonne humeur et sa capacité naturelle à capter l’attention de son audience. À travers ses contenus, elle met en valeur une cuisine généreuse, accessible et chaleureuse, avec un univers visuel simple, engageant et proche du quotidien. Sa manière de présenter les recettes et d’intégrer les produits avec naturel en fait un profil particulièrement intéressant pour les marques souhaitant toucher leur public de façon crédible et humaine.",
+    reseau: "TikTok",
+    abonnes: "180 600 abonnés",
+    photo: Aissatou,
+    photoPosition: "center -0%",
   },
 ];
 
@@ -70,7 +82,7 @@ const InfluenceurCard = ({ item }) => {
         border: `1px solid ${hovered ? "#f0d9a0" : "#e5dfd3"}`,
         borderRadius: "20px",
         overflow: "hidden",
-        transition: "transform 0.3s, box-shadow 0.3s, border-color 0.3s",
+        transition: "0.3s",
         transform: hovered ? "translateY(-8px)" : "translateY(0)",
         boxShadow: hovered
           ? "0 25px 60px rgba(0,0,0,0.12)"
@@ -80,24 +92,21 @@ const InfluenceurCard = ({ item }) => {
         position: "relative",
       }}
     >
-      {/* Badge réseau */}
       {item.reseau && (
         <div
           style={{
             position: "absolute",
             top: "1px",
-            right: "0px",
+            left: "0px",
             background: "#000",
             color: "#fff",
-            fontSize: "0.85rem",
-            fontWeight: 700,
-            padding: "0.5rem 1rem",
-            borderRadius: "10px 0 0 10px",
+            padding: "0.3rem 0.6rem", // 🔥 réduit
+            borderRadius: "0 10px 10px 0",
             display: "flex",
             alignItems: "center",
-            gap: "8px",
+            gap: "5px", // 🔥 réduit
+            fontSize: "0.75rem", // 🔥 texte plus petit
             zIndex: 3,
-            boxShadow: "-4px 4px 12px rgba(0,0,0,0.2)",
           }}
         >
           <BadgeIcon reseau={item.reseau} />
@@ -105,142 +114,126 @@ const InfluenceurCard = ({ item }) => {
         </div>
       )}
 
-      {/* Zone Photo */}
       <div
         style={{
           height: "320px",
           overflow: "hidden",
           background: "linear-gradient(135deg, #fdf6e3 0%, #f0d9a0 100%)",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          flexShrink: 0,
         }}
       >
-        {item.photo ? (
-          <img
-            src={item.photo}
-            alt={item.nom}
-            style={{
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              objectPosition: item.photoPosition || "center top",
-              display: "block",
-            }}
-          />
-        ) : (
-          <div
-            style={{
-              width: "90px",
-              height: "90px",
-              borderRadius: "50%",
-              background: "#fff",
-              border: "3px solid #b8860b",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <svg
-              width="40"
-              height="40"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="#b8860b"
-              strokeWidth="1.5"
-            >
-              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-              <circle cx="12" cy="7" r="4" />
-            </svg>
-          </div>
-        )}
+        <img
+          src={item.photo}
+          alt={item.nom}
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            objectPosition: item.photoPosition,
+          }}
+        />
       </div>
 
-      {/* Zone Texte */}
       <div style={{ padding: "2.4rem" }}>
-        <div
-          style={{
-            fontSize: "0.85rem",
-            fontWeight: 700,
-            letterSpacing: "0.15em",
-            textTransform: "uppercase",
-            color: "#b8860b",
-            marginBottom: "0.5rem",
-          }}
-        >
+        <div style={{ color: "#b8860b", fontWeight: 700 }}>
           {item.role}
         </div>
-
-        <h3
-          style={{
-            fontSize: "1.5rem",
-            fontWeight: 800,
-            color: "#111110",
-            marginBottom: "1rem",
-          }}
-        >
+        <h3 style={{ fontSize: "1.5rem", fontWeight: 800 }}>
           {item.nom}
         </h3>
-
-        <p
-          style={{
-            fontSize: "1rem",
-            color: "#7a7a74",
-            lineHeight: 1.8,
-          }}
-        >
-          {item.description}
-        </p>
+        <p style={{ color: "#7a7a74" }}>{item.description}</p>
       </div>
     </div>
   );
 };
 
 export default function Influenceurs() {
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const scrollRef = useRef();
 
-  useEffect(() => {
-    const fn = () => setIsMobile(window.innerWidth < 768);
-    window.addEventListener("resize", fn);
-    return () => window.removeEventListener("resize", fn);
-  }, []);
+  const scroll = (direction) => {
+    const scrollAmount = 350;
+    scrollRef.current.scrollBy({
+      left: direction === "left" ? -scrollAmount : scrollAmount,
+      behavior: "smooth",
+    });
+  };
 
   return (
-    <section
-      id="influenceurs"
-      style={{
-        padding: isMobile ? "4rem 1.2rem" : "7rem 5rem",
-        background: "#faf8f4",
-      }}
-    >
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "flex-end",
-          flexWrap: "wrap",
-          gap: "1.5rem",
-          marginBottom: "3.5rem",
-        }}
-      >
-        <SectionHeader
-          label="Nos Influenceurs"
-          title="Ils parleront de <em style='font-family:Fraunces,serif;font-style:italic;color:#b8860b'>vous</em>"
-          subtitle="Des créateurs de contenu et entrepreneurs qui partagent notre vision du numérique africain et prêts à rendre votre business plus visible."
-        />
-      </div>
+    <section style={{ padding: "7rem 5rem", background: "#faf8f4" }}>
+      <SectionHeader
+        label="Nos Influenceurs"
+        title="Ils parleront de vous"
+        subtitle="Des créateurs engagés pour booster votre visibilité"
+      />
 
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: isMobile ? "1fr" : "repeat(3, 1fr)",
-          gap: "2.2rem",
-        }}
-      >
-        {INFLUENCEURS.map((item) => (
-          <InfluenceurCard key={item.id} item={item} />
-        ))}
+      <div style={{ position: "relative", marginTop: "3rem" }}>
+        {/* bouton gauche */}
+        <button
+          onClick={() => scroll("left")}
+          style={{
+            position: "absolute",
+            left: "-10px",
+            top: "50%",
+            transform: "translateY(-50%)",
+            zIndex: 5,
+            background: "#000",
+            color: "#fff",
+            borderRadius: "50%",
+            width: "40px",
+            height: "40px",
+            cursor: "pointer",
+          }}
+        >
+          ←
+        </button>
+
+        {/* scroll horizontal */}
+        <div
+          ref={scrollRef}
+          style={{
+            display: "flex",
+            gap: "2.2rem",
+            overflowX: "auto",
+            scrollBehavior: "smooth",
+            scrollSnapType: "x mandatory", // 🔥 clé mobile
+            paddingBottom: "10px",
+          }}
+        >
+          {INFLUENCEURS.map((item) => (
+           <div
+              key={item.id}
+              style={{
+              minWidth: window.innerWidth < 768 ? "85%" : "320px",
+                scrollSnapAlign: "start", // 🔥 aligne au début
+
+                
+              }}
+
+            >
+              
+              <InfluenceurCard item={item} />
+            </div>
+          ))}
+        </div>
+
+        {/* bouton droite */}
+        <button
+          onClick={() => scroll("right")}
+          style={{
+            position: "absolute",
+            right: "-10px",
+            top: "50%",
+            transform: "translateY(-50%)",
+            zIndex: 5,
+            background: "#000",
+            color: "#fff",
+            borderRadius: "50%",
+            width: "40px",
+            height: "40px",
+            cursor: "pointer",
+          }}
+        >
+          →
+        </button>
       </div>
     </section>
   );
