@@ -1,4 +1,20 @@
 import { useState } from "react";
+import Google from "../data/Google.js"; // adapte le chemin
+
+// puis dans le JSX :
+<img
+  src={Google}
+  alt="featured"
+  style={{
+    width: "100%",
+    aspectRatio: "16/6",
+    objectFit: "cover",
+    objectPosition: "center top", // ajuste le cadrage si besoin
+    borderRadius: "6px",
+    marginBottom: "2.8rem",
+    display: "block",
+  }}
+/>
 
 // ─── CONTENU DE L'ARTICLE ─────────────────────────────────
 const ARTICLE = {
@@ -225,7 +241,19 @@ export default function Blog() {
       <div style={S.layout}>
         <main>
           {/* Image vedette */}
-          <div style={S.featImg}>🌍</div>
+          <img
+  src={Google}
+  alt="Google au Sénégal"
+  style={{
+    width: "100%",
+    aspectRatio: "16/9",
+    objectFit: "cover",
+    objectPosition: "center",
+    borderRadius: "6px",
+    marginBottom: "2.8rem",
+    display: "block",
+  }}
+/>
 
           {/* Intro */}
           <p style={S.intro}>{ARTICLE.intro}</p>
