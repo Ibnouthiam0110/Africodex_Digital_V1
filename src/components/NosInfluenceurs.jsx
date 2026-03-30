@@ -211,7 +211,8 @@ export default function Influenceurs() {
 const scrollTo = (index) => {
   if (!scrollRef.current) return;
   const el = scrollRef.current;
-  const cardWidth = el.offsetWidth * 0.78 + 16;
+  // Largeur réelle de la carte = 78% du scroll container moins le paddingLeft
+  const cardWidth = (el.offsetWidth - 50) * 0.78 + 16;
   el.scrollTo({ left: cardWidth * index, behavior: "smooth" });
 };
 
@@ -234,81 +235,92 @@ const scrollTo = (index) => {
     }
   };
 
-  return (
+return (
   <section style={{
-  padding: mobile ? "4rem 1.2rem 2rem" : "7rem 5rem 3rem",  // ← réduit le padding-bottom
-  background: "#faf8f4",
-}}>
+    padding: mobile ? "4rem 0 2rem" : "7rem 5rem 3rem",  // ← 0 padding horizontal sur mobile
+    background: "#faf8f4",
+    overflowX: "hidden",  // ← empêche le débordement
+  }}>
+    <div style={{ padding: mobile ? "0 1.2rem" : "0" }}>
       <SectionHeader
         label="Nos Influenceurs"
         title="Ils parleront de vous"
         subtitle="Des créateurs engagés pour booster votre visibilité"
       />
-
-      <div style={{ position: "relative", marginTop: "2rem" }}>
-        {/* Bouton gauche */}
-        <button
-          onClick={() => scroll("left")}
-          style={{
-            position: "absolute",
-            left: mobile ? "-4px" : "-20px",
-            top: "38%",
-            transform: "translateY(-50%)",
-            zIndex: 5,
-            background: "#000", color: "#fff", border: "none",
-            borderRadius: "50%", width: "42px", height: "42px",
-            cursor: "pointer", fontSize: "18px",
-            display: "flex", alignItems: "center", justifyContent: "center",
-          }}
-        >←</button>
-
-       {/* Conteneur scroll */}
-<div
-  ref={scrollRef}
-  style={{
-    display: "flex",
-    gap: "1rem",
-    overflowX: "auto",
-    scrollSnapType: "x mandatory",
-    scrollbarWidth: "none",
-    msOverflowStyle: "none",
-    paddingBottom: "8px",
-  }}
->
-  {INFLUENCEURS.map((item) => (
-    <div
-      key={item.id}
-      style={{
-        flex: mobile ? "0 0 78%" : "0 0 calc(25% - 0.75rem)",
-        minWidth: mobile ? "78%" : "220px",
-        scrollSnapAlign: "start",
-      }}
-    >
-      <InfluenceurCard item={item} onVoirPlus={setModalItem} mobile={mobile} />
     </div>
-  ))}
-</div>
 
-        {/* Bouton droite */}
-        <button
-          onClick={() => scroll("right")}
-          style={{
-            position: "absolute",
-            right: mobile ? "-4px" : "-20px",
-            top: "38%",
-            transform: "translateY(-50%)",
-            zIndex: 5,
-            background: "#000", color: "#fff", border: "none",
-            borderRadius: "50%", width: "42px", height: "42px",
-            cursor: "pointer", fontSize: "18px",
-            display: "flex", alignItems: "center", justifyContent: "center",
-          }}
-        >→</button>
+    <div style={{
+      position: "relative",
+      marginTop: "2rem",
+      // Sur mobile : padding pour les boutons sans overflow
+      padding: mobile ? "0 0.5rem" : "0",
+    }}>
+      {/* Bouton gauche */}
+      <button
+        onClick={() => scroll("left")}
+        style={{
+          position: "absolute",
+          left: mobile ? "4px" : "-20px",  // ← positif sur mobile
+          top: "38%",
+          transform: "translateY(-50%)",
+          zIndex: 5,
+          background: "#000", color: "#fff", border: "none",
+          borderRadius: "50%", width: "38px", height: "38px",
+          cursor: "pointer", fontSize: "16px",
+          display: "flex", alignItems: "center", justifyContent: "center",
+        }}
+      >←</button>
+
+      {/* Conteneur scroll */}
+      <div
+        ref={scrollRef}
+        style={{
+          display: "flex",
+          gap: "1rem",
+          overflowX: "auto",
+          scrollSnapType: "x mandatory",
+          scrollbarWidth: "none",
+          msOverflowStyle: "none",
+          paddingBottom: "8px",
+          // Décale le contenu pour laisser place aux boutons sur mobile
+          paddingLeft: mobile ? "50px" : "0",
+          paddingRight: mobile ? "16px" : "0",
+        }}
+      >
+        {INFLUENCEURS.map((item) => (
+          <div
+            key={item.id}
+            style={{
+              flex: mobile ? "0 0 78%" : "0 0 calc(25% - 0.75rem)",
+              minWidth: mobile ? "78%" : "220px",
+              scrollSnapAlign: "start",
+            }}
+          >
+            <InfluenceurCard item={item} onVoirPlus={setModalItem} mobile={mobile} />
+          </div>
+        ))}
       </div>
 
-      {modalItem && (
-        <Modal item={modalItem} onClose={() => setModalItem(null)} />
-      )}
-    </section>
-  );
+      {/* Bouton droite */}
+      <button
+        onClick={() => scroll("right")}
+        style={{
+          position: "absolute",
+          right: mobile ? "4px" : "-20px",  // ← positif sur mobile
+          top: "38%",
+          transform: "translateY(-50%)",
+          zIndex: 5,
+          background: "#000", color: "#fff", border: "none",
+          borderRadius: "50%", width: "38px", height: "38px",
+          cursor: "pointer", fontSize: "16px",
+          display: "flex", alignItems: "center", justifyContent: "center",
+        }}
+      >→</button>
+    </div>
+
+    {modalItem && (
+      <Modal item={modalItem} onClose={() => setModalItem(null)} />
+    )}
+  </section>
+);
 }
