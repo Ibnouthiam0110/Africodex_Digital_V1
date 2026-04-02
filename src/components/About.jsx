@@ -30,7 +30,7 @@ export default function About() {
       <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: isMobile ? "2.5rem" : "6rem", alignItems: "center" }}>
         <div style={{ position: "relative", height: isMobile ? "260px" : "460px" }}>
           <div style={{ width: "100%", height: "100%", borderRadius: "20px", overflow: "hidden", boxShadow: "0 16px 56px rgba(0,0,0,0.13)" }}>
-            <img src={TeamImage} alt="Équipe Africodex Digital" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+            <img src={TeamImage} alt="Équipe Africodex Digital" style={{ width: "100%", height: "100%", objectFit: "contain"  }} />
             <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, transparent 50%, rgba(184,134,11,0.15) 100%)", borderRadius: "20px" }} />
           </div>
         </div>
