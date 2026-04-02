@@ -42,50 +42,8 @@ const TEMPLATES = [
     accent: "#2563eb",
     isLive: false,
   },
-  {
-    id: 4,
-    title: "App Livraison Locale",
-    category: "Application Mobile",
-    tag: "Bientôt disponible",
-    desc: "Application mobile de livraison avec géolocalisation, tracking et paiement mobile.",
-    tech: ["React Native", "Firebase", "Maps"],
-    color: "#f0fdf4",
-    accent: "#16a34a",
-    isLive: false,
-  },
-  {
-    id: 5,
-    title: "Cabinet Médical",
-    category: "Site Vitrine",
-    tag: "Bientôt disponible",
-    desc: "Site professionnel pour cabinet médical avec prise de rendez-vous en ligne.",
-    tech: ["Next.js", "Tailwind", "Cal.com"],
-    color: "#fdf6e3",
-    accent: "#b8860b",
-    isLive: false,
-  },
-  {
-    id: 6,
-    title: "Marketplace Artisanat",
-    category: "E-commerce",
-    tag: "Bientôt disponible",
-    desc: "Marketplace multi-vendeurs dédiée à l'artisanat africain avec gestion des commissions.",
-    tech: ["Next.js", "Prisma", "Wave API"],
-    color: "#fdf4ff",
-    accent: "#9333ea",
-    isLive: false,
-  },
-  {
-    id: 7,
-    title: "Dashboard Analytics",
-    category: "Dashboard",
-    tag: "Bientôt disponible",
-    desc: "Tableau de bord avec statistiques en temps réel et rapports personnalisés.",
-    tech: ["React", "Chart.js", "REST API"],
-    color: "#f0f7ff",
-    accent: "#2563eb",
-    isLive: false,
-  },
+ 
+
 ];
 
 const PreviewModal = ({ item, onClose }) => {

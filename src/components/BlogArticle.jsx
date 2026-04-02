@@ -1,22 +1,6 @@
 import { useState } from "react";
-import Google from "../data/Google.js"; // adapte le chemin
+import Google from "../data/Google.js";
 
-// puis dans le JSX :
-<img
-  src={Google}
-  alt="featured"
-  style={{
-    width: "100%",
-    aspectRatio: "16/6",
-    objectFit: "cover",
-    objectPosition: "center top", // ajuste le cadrage si besoin
-    borderRadius: "6px",
-    marginBottom: "2.8rem",
-    display: "block",
-  }}
-/>
-
-// ─── CONTENU DE L'ARTICLE ─────────────────────────────────
 const ARTICLE = {
   label: "Marketing Digital",
   date: "Mars 2025",
@@ -133,10 +117,17 @@ const ARTICLE = {
   ],
 };
 
-// ─── STYLES ───────────────────────────────────────────────
 const S = {
   wrap: { fontFamily: "'Plus Jakarta Sans', sans-serif", background: "#faf9f7", paddingTop: "80px" },
-
+  backBar: { background: "#faf9f7", padding: "1rem 4rem", borderBottom: "1px solid #e5dfd3" },
+  backBtn: {
+    display: "inline-flex", alignItems: "center", gap: "0.5rem",
+    background: "none", border: "1.5px solid #e5dfd3", borderRadius: "4px",
+    padding: "0.5rem 1.1rem", cursor: "pointer",
+    fontSize: "0.78rem", fontWeight: 700, letterSpacing: "0.08em",
+    textTransform: "uppercase", color: "#7a7a74",
+    transition: "all 0.2s", fontFamily: "'Plus Jakarta Sans', sans-serif",
+  },
   hero: { background: "#111110", padding: "5rem 4rem 4rem", position: "relative", overflow: "hidden" },
   heroGlow: {
     position: "absolute", inset: 0, pointerEvents: "none",
@@ -154,19 +145,8 @@ const S = {
   heroMeta: { display: "flex", alignItems: "center", gap: "1rem", marginTop: "1.8rem", flexWrap: "wrap", color: "rgba(245,237,216,0.45)", fontSize: "0.78rem" },
   heroTag: { background: "rgba(184,134,11,0.18)", color: "#b8860b", padding: "0.2rem 0.7rem", borderRadius: "2px", fontWeight: 700, fontSize: "0.68rem", letterSpacing: "0.08em", textTransform: "uppercase" },
   dot: { width: 3, height: 3, background: "#b8860b", borderRadius: "50%", display: "inline-block" },
-
   layout: { maxWidth: "1100px", margin: "0 auto", padding: "4rem 4rem 7rem", display: "grid", gridTemplateColumns: "1fr 290px", gap: "3.5rem", alignItems: "start" },
-
-  featImg: {
-    width: "100%", aspectRatio: "16/6",
-    background: "linear-gradient(135deg, #1a0f05 0%, #3d1f08 45%, #b8860b 100%)",
-    borderRadius: "6px", marginBottom: "2.8rem",
-    display: "flex", alignItems: "center", justifyContent: "center",
-    fontSize: "3.5rem", letterSpacing: "0.4rem", color: "rgba(255,255,255,0.12)",
-  },
-
   intro: { fontSize: "1.02rem", lineHeight: 1.9, color: "#6b5e4e", borderLeft: "3px solid #b8860b", paddingLeft: "1.4rem", marginBottom: "3rem", whiteSpace: "pre-line" },
-
   section: { marginBottom: "2.8rem" },
   sectionNum: { fontSize: "3.2rem", fontWeight: 800, color: "rgba(184,134,11,0.08)", lineHeight: 1, marginBottom: "-0.9rem", display: "block" },
   sectionTitle: { fontSize: "1.3rem", fontWeight: 800, color: "#111110", marginBottom: "0.8rem", lineHeight: 1.3 },
@@ -175,30 +155,24 @@ const S = {
   tipsList: { listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "0.6rem" },
   tipItem: { display: "flex", alignItems: "flex-start", gap: "0.8rem", fontSize: "0.9rem", lineHeight: 1.6, color: "#3a2e22" },
   tipBullet: { flexShrink: 0, width: "22px", height: "22px", background: "#b8860b", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontSize: "0.6rem", fontWeight: 700, marginTop: "0.15rem" },
-
   divider: { width: "48px", height: "2px", background: "linear-gradient(to right, #b8860b, #d4a438)", margin: "2rem 0", borderRadius: "2px" },
-
   highlight: { background: "#111110", borderRadius: "6px", padding: "1.8rem 2rem 1.8rem 2.2rem", margin: "2.5rem 0", position: "relative", overflow: "hidden" },
   highlightBar: { position: "absolute", top: 0, left: 0, width: "4px", height: "100%", background: "linear-gradient(to bottom, #b8860b, #d4a438)" },
   highlightText: { color: "#faf9f7", fontSize: "0.98rem", lineHeight: 1.8, fontStyle: "italic", margin: 0 },
   highlightCite: { display: "block", marginTop: "0.7rem", color: "#b8860b", fontSize: "0.73rem", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", fontStyle: "normal" },
-
   africoBox: { background: "#fff", border: "1px solid rgba(184,134,11,0.15)", borderRadius: "8px", padding: "2.2rem", margin: "2.5rem 0", boxShadow: "0 2px 16px rgba(0,0,0,0.05)" },
   africoTitle: { fontSize: "1.15rem", fontWeight: 800, color: "#111110", marginBottom: "0.7rem" },
   africoBody: { fontSize: "0.93rem", lineHeight: 1.8, color: "#3a2e22", marginBottom: "1.2rem" },
   africoGrid: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.55rem" },
   africoItem: { display: "flex", gap: "0.5rem", alignItems: "flex-start", fontSize: "0.88rem", lineHeight: 1.5, color: "#3a2e22" },
   africoArrow: { color: "#b8860b", fontWeight: 700, flexShrink: 0 },
-
   conclusionBox: { background: "linear-gradient(135deg, #111110 0%, #2a1a05 100%)", borderRadius: "8px", padding: "2.5rem", margin: "2.5rem 0" },
   conclusionLabel: { fontSize: "0.72rem", fontWeight: 700, color: "#b8860b", textTransform: "uppercase", letterSpacing: "0.15em", marginBottom: "1rem" },
   conclusionText: { color: "rgba(245,237,216,0.82)", fontSize: "0.93rem", lineHeight: 1.85, whiteSpace: "pre-line", margin: 0 },
-
   cta: { background: "linear-gradient(135deg, #b8860b 0%, #8B6508 100%)", borderRadius: "8px", padding: "2.5rem 2rem", textAlign: "center", marginTop: "2.5rem" },
   ctaTitle: { fontSize: "1.4rem", fontWeight: 800, color: "#fff", marginBottom: "0.7rem" },
   ctaText: { color: "rgba(255,255,255,0.82)", fontSize: "0.9rem", lineHeight: 1.65, marginBottom: "1.5rem" },
   ctaBtn: { display: "inline-block", textDecoration: "none", fontWeight: 700, fontSize: "0.8rem", letterSpacing: "0.1em", textTransform: "uppercase", padding: "0.85rem 2.2rem", borderRadius: "4px", border: "none", cursor: "pointer", transition: "all 0.25s" },
-
   sidebar: { position: "sticky", top: "100px" },
   sideCard: { background: "#fff", borderRadius: "6px", padding: "1.5rem", marginBottom: "1.2rem", border: "1px solid rgba(184,134,11,0.12)", boxShadow: "0 2px 12px rgba(0,0,0,0.04)" },
   sideTitle: { fontSize: "0.88rem", fontWeight: 800, color: "#111110", marginBottom: "1rem", paddingBottom: "0.65rem", borderBottom: "2px solid #f0ebe0" },
@@ -212,13 +186,28 @@ const S = {
   tagPill: { background: "#f0ebe0", color: "#7a7a74", fontSize: "0.7rem", padding: "0.28rem 0.7rem", borderRadius: "2px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.06em", cursor: "pointer", border: "none", transition: "background 0.2s, color 0.2s" },
 };
 
-export default function Blog() {
+export default function BlogArticle({ onNavigate }) {
   const [ctaHover, setCtaHover] = useState(false);
+  const [backHover, setBackHover] = useState(false);
 
   return (
-    <section id="blog" style={S.wrap}>
+    <section style={S.wrap}>
 
-      {/* HERO */}
+      <div style={S.backBar}>
+        <button
+          onClick={() => onNavigate("home")}
+          style={{
+            ...S.backBtn,
+            borderColor: backHover ? "#b8860b" : "#e5dfd3",
+            color: backHover ? "#b8860b" : "#7a7a74",
+          }}
+          onMouseEnter={() => setBackHover(true)}
+          onMouseLeave={() => setBackHover(false)}
+        >
+          ← Retour au site
+        </button>
+      </div>
+
       <div style={S.hero}>
         <div style={S.heroGlow} />
         <div style={S.heroInner}>
@@ -237,28 +226,16 @@ export default function Blog() {
         </div>
       </div>
 
-      {/* LAYOUT */}
       <div style={S.layout}>
         <main>
-          {/* Image vedette */}
           <img
-  src={Google}
-  alt="Google au Sénégal"
-  style={{
-    width: "100%",
-    aspectRatio: "16/9",
-    objectFit: "cover",
-    objectPosition: "center",
-    borderRadius: "6px",
-    marginBottom: "2.8rem",
-    display: "block",
-  }}
-/>
+            src={Google}
+            alt="Google au Sénégal"
+            style={{ width: "100%", aspectRatio: "16/9", objectFit: "cover", objectPosition: "center", borderRadius: "6px", marginBottom: "2.8rem", display: "block" }}
+          />
 
-          {/* Intro */}
           <p style={S.intro}>{ARTICLE.intro}</p>
 
-          {/* Sections */}
           {ARTICLE.sections.map((sec, i) => (
             <div key={sec.num}>
               <div style={S.section}>
@@ -276,7 +253,6 @@ export default function Blog() {
                 </ul>
               </div>
 
-              {/* Highlight encadré après section 3 */}
               {i === 2 && (
                 <div style={S.highlight}>
                   <div style={S.highlightBar} />
@@ -289,7 +265,6 @@ export default function Blog() {
             </div>
           ))}
 
-          {/* Bloc Africodex */}
           <div style={S.africoBox}>
             <h3 style={S.africoTitle}>{ARTICLE.africodex.title}</h3>
             <p style={S.africoBody}>{ARTICLE.africodex.body}</p>
@@ -303,13 +278,11 @@ export default function Blog() {
             </div>
           </div>
 
-          {/* Conclusion */}
           <div style={S.conclusionBox}>
             <p style={S.conclusionLabel}>Conclusion</p>
             <p style={S.conclusionText}>{ARTICLE.conclusion}</p>
           </div>
 
-          {/* CTA */}
           <div style={S.cta}>
             <h3 style={S.ctaTitle}>Prêt à attirer plus de clients&nbsp;?</h3>
             <p style={S.ctaText}>
@@ -318,11 +291,8 @@ export default function Blog() {
             </p>
             <a
               href="#contact"
-              style={{
-                ...S.ctaBtn,
-                background: ctaHover ? "#fff" : "#111110",
-                color: ctaHover ? "#111110" : "#fff",
-              }}
+              onClick={() => onNavigate("home")}
+              style={{ ...S.ctaBtn, background: ctaHover ? "#fff" : "#111110", color: ctaHover ? "#111110" : "#fff" }}
               onMouseEnter={() => setCtaHover(true)}
               onMouseLeave={() => setCtaHover(false)}
             >
@@ -331,12 +301,11 @@ export default function Blog() {
           </div>
         </main>
 
-        {/* SIDEBAR */}
         <aside style={S.sidebar}>
           <div style={S.sideCard}>
             <div style={S.sideTitle}>Dans cet article</div>
             {ARTICLE.toc.map((item, i) => (
-              <a key={i} href="#blog" style={S.tocLink}
+              <a key={i} href="#" style={S.tocLink}
                 onMouseEnter={e => e.currentTarget.style.color = "#b8860b"}
                 onMouseLeave={e => e.currentTarget.style.color = "#7a7a74"}
               >
@@ -351,7 +320,7 @@ export default function Blog() {
               <div key={i} style={{ ...S.relatedItem, ...(i === ARTICLE.related.length - 1 ? { borderBottom: "none", marginBottom: 0, paddingBottom: 0 } : {}) }}>
                 <div style={S.relatedThumb}>{r.icon}</div>
                 <div>
-                  <a href="#blog" style={S.relatedLink}
+                  <a href="#" style={S.relatedLink}
                     onMouseEnter={e => e.currentTarget.style.color = "#b8860b"}
                     onMouseLeave={e => e.currentTarget.style.color = "#111110"}
                   >{r.title}</a>

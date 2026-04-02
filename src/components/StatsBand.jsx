@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 
 const STATS = [
-  { target: 6,   suffix: "+",  label: "Services digitaux" },
+  { target: 15,   suffix: "+",  label: "Services digitaux" },
   { target: 100, suffix: "%",  label: "Orienté résultats" },
-  { target: 54,  suffix: "",   label: "Pays africains" },
+  { target: 0,  suffix: "",   label: "Compromis sur la qualité" },
   { target: 24,  suffix: "h",  label: "Réponse garantie" },
 ];
 

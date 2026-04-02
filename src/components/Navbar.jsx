@@ -6,11 +6,10 @@ const NAV_LINKS = [
   ["#services",     "Services"],
   ["#realisations", "Realisations"],
   ["#process",      "Approche"],
-  ["#blog",         "Blog"],       // ← AJOUTÉ
   ["#contact",      "Contact"],
 ];
 
-export default function Navbar() {
+export default function Navbar({ onNavigate }) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
@@ -20,8 +19,21 @@ export default function Navbar() {
     const onResize = () => setIsMobile(window.innerWidth < 768);
     window.addEventListener("scroll", onScroll);
     window.addEventListener("resize", onResize);
-    return () => { window.removeEventListener("scroll", onScroll); window.removeEventListener("resize", onResize); };
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onResize);
+    };
   }, []);
+
+  const handleBlogClick = (e) => {
+    e.preventDefault();
+    onNavigate("article");
+  };
+
+  const handleLogoClick = (e) => {
+    e.preventDefault();
+    onNavigate("home");
+  };
 
   return (
     <>
@@ -35,7 +47,8 @@ export default function Navbar() {
         boxShadow: scrolled ? "0 2px 20px rgba(0,0,0,0.07)" : "none",
         transition: "box-shadow 0.3s",
       }}>
-        <a href="#home" style={{ display: "flex", alignItems: "center", flexShrink: 0 }}>
+
+        <a href="#home" onClick={handleLogoClick} style={{ display: "flex", alignItems: "center", flexShrink: 0 }}>
           <img src={LOGO} alt="Africodex Digital" style={{ height: "50px", width: "auto", objectFit: "contain" }} />
         </a>
 
@@ -44,21 +57,36 @@ export default function Navbar() {
             <ul style={{ display: "flex", gap: "2rem", listStyle: "none", margin: 0, padding: 0 }}>
               {NAV_LINKS.map(([href, label]) => (
                 <li key={href}>
-                  <a href={href} style={{ color: "#7a7a74", textDecoration: "none", fontSize: "0.82rem", letterSpacing: "0.06em", textTransform: "uppercase", fontWeight: 700, transition: "color 0.3s", fontFamily: "'Plus Jakarta Sans', sans-serif" }}
+                  <a
+                    href={href}
+                    style={{ color: "#7a7a74", textDecoration: "none", fontSize: "0.82rem", letterSpacing: "0.06em", textTransform: "uppercase", fontWeight: 700, transition: "color 0.3s", fontFamily: "'Plus Jakarta Sans', sans-serif" }}
                     onMouseEnter={e => e.target.style.color = "#b8860b"}
                     onMouseLeave={e => e.target.style.color = "#7a7a74"}
                   >{label}</a>
                 </li>
               ))}
+              <li>
+                <a
+                  href="#blog"
+                  onClick={handleBlogClick}
+                  style={{ color: "#7a7a74", textDecoration: "none", fontSize: "0.82rem", letterSpacing: "0.06em", textTransform: "uppercase", fontWeight: 700, transition: "color 0.3s", fontFamily: "'Plus Jakarta Sans', sans-serif" }}
+                  onMouseEnter={e => e.target.style.color = "#b8860b"}
+                  onMouseLeave={e => e.target.style.color = "#7a7a74"}
+                >Blog</a>
+              </li>
             </ul>
 
             <div style={{ display: "flex", gap: "0.8rem", alignItems: "center" }}>
-              <a href="#rejoignez-nous" style={{ background: "transparent", color: "#b8860b", padding: "0.6rem 1.5rem", fontSize: "0.8rem", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", textDecoration: "none", borderRadius: "4px", border: "1.5px solid #b8860b", whiteSpace: "nowrap", transition: "background 0.3s, color 0.3s" }}
+              <a
+                href="#rejoignez-nous"
+                style={{ background: "transparent", color: "#b8860b", padding: "0.6rem 1.5rem", fontSize: "0.8rem", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", textDecoration: "none", borderRadius: "4px", border: "1.5px solid #b8860b", whiteSpace: "nowrap", transition: "background 0.3s, color 0.3s" }}
                 onMouseEnter={e => { e.currentTarget.style.background = "#b8860b"; e.currentTarget.style.color = "#fff"; }}
                 onMouseLeave={e => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = "#b8860b"; }}
               >Rejoignez-nous</a>
 
-              <a href="#contact" style={{ background: "#111110", color: "#fff", padding: "0.6rem 1.5rem", fontSize: "0.8rem", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", textDecoration: "none", borderRadius: "4px", whiteSpace: "nowrap", transition: "background 0.3s" }}
+              <a
+                href="#contact"
+                style={{ background: "#111110", color: "#fff", padding: "0.6rem 1.5rem", fontSize: "0.8rem", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", textDecoration: "none", borderRadius: "4px", whiteSpace: "nowrap", transition: "background 0.3s" }}
                 onMouseEnter={e => { e.currentTarget.style.background = "#b8860b"; }}
                 onMouseLeave={e => { e.currentTarget.style.background = "#111110"; }}
               >Demarrer un projet</a>
@@ -80,6 +108,11 @@ export default function Navbar() {
           {NAV_LINKS.map(([href, label]) => (
             <a key={href} href={href} onClick={() => setMenuOpen(false)} style={{ color: "#111110", textDecoration: "none", fontSize: "1rem", fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase" }}>{label}</a>
           ))}
+          <a
+            href="#blog"
+            onClick={(e) => { e.preventDefault(); setMenuOpen(false); onNavigate("article"); }}
+            style={{ color: "#111110", textDecoration: "none", fontSize: "1rem", fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase" }}
+          >Blog</a>
           <a href="#rejoignez-nous" onClick={() => setMenuOpen(false)} style={{ background: "transparent", color: "#b8860b", padding: "0.9rem 1.5rem", fontSize: "0.85rem", fontWeight: 700, textAlign: "center", textDecoration: "none", borderRadius: "4px", border: "1.5px solid #b8860b", marginTop: "0.5rem" }}>Rejoignez-nous</a>
           <a href="#contact" onClick={() => setMenuOpen(false)} style={{ background: "#111110", color: "#fff", padding: "0.9rem 1.5rem", fontSize: "0.85rem", fontWeight: 700, textAlign: "center", textDecoration: "none", borderRadius: "4px" }}>Demarrer un projet</a>
         </div>

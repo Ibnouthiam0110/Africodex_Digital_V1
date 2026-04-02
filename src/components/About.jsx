@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import SectionHeader from "./SectionHeader";
-import TeamImage from "../images/AFRICODEX_Image.jpeg";
+import TeamImage from "../images/Afri.jpeg";
 
 
 
